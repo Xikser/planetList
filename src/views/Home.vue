@@ -1,19 +1,16 @@
 <template>
-  <div class="home">
-    <PlanetsList />
-  </div>
+  <section class="container">
+    <PlanetsList/>
+  </section>
 </template>
 
 <script>
 import PlanetsList from '@/components/PlanetsList'
-// import axios from 'axios'
+
 export default {
   name: 'Home',
   components: {
     PlanetsList
-  },
-  data () {
-    return {}
   }
 }
 </script>
