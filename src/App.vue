@@ -25,4 +25,13 @@ a
 
 ol, ul, li
   list-style: none
+
+button
+  position: relative
+  padding: 0
+  margin: 0
+  color: $text-color
+  outline: none
+  background: transparent
+  border: 0
 </style>
