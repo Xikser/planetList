@@ -1,0 +1,34 @@
+.isActive
+	background: red !important
+
+.pagination
+	position: relative
+	width: 100vw
+	height: 10em
+
+	&__list
+		width: 100%
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-content: center
+
+	&__prev, &__next, &__page
+		margin: 0 15px
+		font-size: 1.5rem
+		text-transform: uppercase
+		cursor: pointer
+		padding: 10px 15px
+		transition: all .3s ease
+		border: 1px solid white
+
+	&__page
+
+		&:hover
+			background: $main-color
+
+	&__prev, &__next
+		background: $main-color
+
+		&:hover
+			background: $second-color-darken
