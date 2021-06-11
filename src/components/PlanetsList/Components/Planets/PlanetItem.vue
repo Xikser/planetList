@@ -26,43 +26,10 @@
       </span>
     </p>
     <p class="planet__p"> Link:
-      <span>
-        {{ planetUrl }}
-      </span>
+      <a class='planet__link' :href=" planetUrl " target="_blank">Sprawdź</a>
     </p>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    planetName: {
-      type: String,
-      required: true
-    },
-    planetRotation: {
-      type: String,
-      required: true
-    },
-    planetClimate: {
-      type: String,
-      required: true
-    },
-    planetGravity: {
-      type: String,
-      required: true
-    },
-    planetCreated: {
-      type: String,
-      required: true
-    },
-    planetUrl: {
-      type: String,
-      required: true
-    }
-  }
-}
-
-</script>
-
-<!--<script src="component.js"/>-->
+<script src="./component.js"/>
+<style src="./style.sass" lang="sass" scoped></style>
