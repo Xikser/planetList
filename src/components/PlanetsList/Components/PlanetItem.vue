@@ -1,11 +1,35 @@
 <template>
-  <div>
-    <p>{{ planetName }}</p>
-    <p>{{ planetRotation }}</p>
-    <p>{{ planetClimate }}</p>
-    <p>{{ planetGravity }}</p>
-    <p>{{ planetCreated }}</p>
-    <p>{{ planetUrl }}</p>
+  <div class="planet">
+    <h2 class="planet__header"> Nazwa planety:
+      <span>
+        {{ planetName }}
+      </span>
+    </h2>
+    <p class="planet__p"> Okres rotacji:
+      <span>
+        {{ planetRotation }}
+      </span>
+    </p>
+    <p class="planet__p"> Panujący klimat:
+      <span>
+        {{ planetClimate }}
+      </span>
+    </p>
+    <p class="planet__p"> Grawitacja:
+      <span>
+       {{ planetGravity }}
+      </span>
+    </p>
+    <p class="planet__p"> Utworzenie planety:
+      <span>
+       {{ planetCreated }}
+      </span>
+    </p>
+    <p class="planet__p"> Link:
+      <span>
+        {{ planetUrl }}
+      </span>
+    </p>
   </div>
 </template>
 
@@ -38,4 +62,7 @@ export default {
     }
   }
 }
+
 </script>
+
+<!--<script src="component.js"/>-->
