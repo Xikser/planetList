@@ -1,5 +1,8 @@
 // @vue/component
 import PlanetItem from './Components/PlanetItem'
+import axios from 'axios'
+
+const URL = 'https://swapi.dev/api/planets'
 
 export default {
   name: 'PlanetsList',
@@ -7,6 +10,23 @@ export default {
     PlanetItem
   },
   data () {
-    return {}
+    return {
+      planets: []
+    }
+  },
+  mounted () {
+    this.getItems()
+  },
+  methods: {
+    getItems () {
+      axios.get(`${URL}`)
+        .then((response) => {
+          this.planets = response.data.results
+          console.log(this.planets)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   }
 }

@@ -3,8 +3,18 @@
     <ul class="planetlist__list">
       <li
         class="planetlist__list-item"
+        v-for="item in planets"
+        :key="item.name"
       >
-        <p>Planet</p>
+        <PlanetItem
+          :planetName="item.name"
+          :planetRotation="item.rotation_period"
+          :planetClimate="item.climate"
+          :planetGravity="item.gravity"
+          :planetCreated="item.created"
+          :planetUrl="item.url"
+        >
+        </PlanetItem>
       </li>
     </ul>
   </section>
