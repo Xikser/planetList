@@ -1,5 +1,5 @@
 // @vue/component
-import PlanetItem from './Components/PlanetItem'
+import PlanetItem from './Components/Planets/PlanetItem'
 import axios from 'axios'
 
 const URL = 'https://swapi.dev/api/planets'
