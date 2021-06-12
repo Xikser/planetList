@@ -2,12 +2,11 @@
   <section class="container">
 
     <Pagination
-      :current="pagination.current"
-      :pages="pagination.pages"
-      :prevButtonStatus="prevDisabled"
-      :nextButtonStatus="nextDisabled"
-      @currentPage="handleCurrentPage"
-      @paginationClick="handleCurrentPage"
+      :current="page.current"
+      :pages="page.pages"
+      @paginationClick="updateCurrentPage( {$event} )"
+      :prevButtonStatus="page.prevButtonStatus"
+      :nextButtonStatus="page.nextButtonStatus"
     />
 
     <h1>Lista planet:</h1>
@@ -19,9 +18,7 @@
 
 <script>
 import PlanetsList from '@/components/PlanetsList'
-import axios from 'axios'
-
-const URL = 'https://swapi.dev/api/planets/?page='
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
@@ -29,58 +26,22 @@ export default {
     PlanetsList,
     Pagination: () => import('../components/PlanetsList/Components/Pagination/Pagination')
   },
-  data () {
-    return {
-      pagination: {
-        prev: '',
-        next: '',
-        current: 1,
-        pages: 6
-      },
-      prevDisabled: false,
-      nextDisabled: false,
-      planets: []
-    }
+  computed: {
+    page () {
+      return this.pagination
+    },
+
+    ...mapState(['pagination', 'planets'])
   },
   mounted () {
     this.getItems()
   },
   methods: {
-    async getItems () {
-      await axios.get(`${URL}${this.pagination.current}`)
-        .then((response) => {
-          this.prev = response.data.previous
-          this.next = response.data.next
-          this.planets = response.data.results
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    },
+    ...mapActions(['getItems', 'updatePage']),
+    ...mapMutations(['UPDATE_PAGE']),
 
-    handleCurrentPage (argument) {
-      if (argument === 'next') {
-        // next page
-        this.pagination.current++
-        this.getItems()
-      } else if (argument === 'prev') {
-        // previous page
-        this.pagination.current--
-        this.getItems()
-      } else {
-        // page id
-        this.pagination.current = argument
-        this.getItems()
-      }
-
-      if (this.pagination.current === 1) {
-        this.prevDisabled = true
-      } else if (this.pagination.current === 6) {
-        this.nextDisabled = true
-      } else {
-        this.prevDisabled = false
-        this.nextDisabled = false
-      }
+    updateCurrentPage (value) {
+      this.updatePage({ value })
     }
   }
 }

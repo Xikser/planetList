@@ -15,14 +15,15 @@ export default {
     handlePaginationClick (index) {
       const pageNumber = index
       this.activeItem = index
-
       this.$emit('paginationClick', pageNumber)
     },
     nextPage () {
-      this.$emit('currentPage', 'next')
+      this.handlePaginationClick(this.current + 1)
+      this.$emit('paginationClick', this.current + 1)
     },
     prevPage () {
-      this.$emit('currentPage', 'prev')
+      this.handlePaginationClick(this.current - 1)
+      this.$emit('paginationClick', this.current - 1)
     }
   }
 }
