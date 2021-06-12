@@ -74,16 +74,11 @@ export default {
       }
 
       if (this.pagination.current === 1) {
-        this.pagination.current = 1
         this.prevDisabled = true
-      } else {
-        this.prevDisabled = false
-      }
-
-      if (this.pagination.current === 6) {
-        this.pagination.current = 6
+      } else if (this.pagination.current === 6) {
         this.nextDisabled = true
       } else {
+        this.prevDisabled = false
         this.nextDisabled = false
       }
     }
