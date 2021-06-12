@@ -6,13 +6,16 @@ export default {
     prevButtonStatus: Boolean,
     nextButtonStatus: Boolean
   },
+  data () {
+    return {
+      activeItem: 1
+    }
+  },
   methods: {
-    handlePaginationClick (e) {
-      const element = e.target
-      const elementTextContent = element.textContent
-      const pageNumber = parseInt(elementTextContent, 10)
+    handlePaginationClick (index) {
+      const pageNumber = index
+      this.activeItem = index
 
-      element.classList.add('isActive')
       this.$emit('paginationClick', pageNumber)
     },
     nextPage () {
