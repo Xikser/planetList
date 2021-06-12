@@ -7,6 +7,7 @@
         :key="item.name"
       >
         <PlanetItem
+          :class="{'isLoading' : $store.state.loading}"
           :planetName="item.name"
           :planetRotation="item.rotation_period"
           :planetClimate="item.climate"

@@ -15,7 +15,7 @@ export default new Vuex.Store({
       prevButtonStatus: false,
       nextButtonStatus: false
     },
-
+    loading: false,
     planets: []
   },
   mutations: {
@@ -30,6 +30,9 @@ export default new Vuex.Store({
     },
     UPDATE_PAGE (state, payload) {
       state.pagination.current = payload.value.$event
+    },
+    IS_LOADING (state, payload) {
+      state.loading = payload
     }
   },
   actions: {
@@ -48,12 +51,16 @@ export default new Vuex.Store({
 
     getItems ({ commit, state }) {
       const URL = 'https://swapi.dev/api/planets/?page='
-
+      commit('IS_LOADING', true)
       axios.get(`${URL}${state.pagination.current}`)
         .then((response) => {
           this.prev = state.pagination.current - 1
           this.next = state.pagination.current + 1
           commit('SET_RESOURCES', response.data.results)
+
+          setTimeout(() => {
+            commit('IS_LOADING', false)
+          }, 1000)
         })
         .catch((error) => {
           console.log(error)
