@@ -11,9 +11,10 @@
       </button>
 
       <li class="pagination__page"
-        v-for="page in pages"
-        :key="page"
-        @click="handlePaginationClick"
+          v-for="page in pages"
+          :key="page"
+          :class="{'isActive' : page === activeItem}"
+          @click="handlePaginationClick(page)"
       >
         {{ page }}
       </li>
