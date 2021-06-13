@@ -34,4 +34,13 @@ button
   outline: none
   background: transparent
   border: 0
+
+input
+  background: transparent
+  border: 0
+  outline: 0
+  color: white
+
+input[type=submit]
+  cursor: pointer
 </style>
