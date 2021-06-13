@@ -1,6 +1,12 @@
 <template>
   <section class="container">
 
+    <h1>Lista planet:</h1>
+
+    <Filters :items="planets"></Filters>
+
+    <PlanetsList :planets="planets" :loading="loading"/>
+
     <Pagination
       :current="page.current"
       :pages="page.pages"
@@ -8,22 +14,19 @@
       :prevButtonStatus="page.prevButtonStatus"
       :nextButtonStatus="page.nextButtonStatus"
     />
-
-    <h1>Lista planet:</h1>
-
-    <PlanetsList :planets="planets" :loading="loading"/>
-
   </section>
 </template>
 
 <script>
 import PlanetsList from '@/components/PlanetsList'
+import Filters from '../components/PlanetsList/Components/Filters/Filters'
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
     PlanetsList,
+    Filters,
     Pagination: () => import('../components/PlanetsList/Components/Pagination/Pagination')
   },
   computed: {
@@ -42,6 +45,10 @@ export default {
 
     updateCurrentPage (value) {
       this.updatePage({ value })
+    },
+
+    fetchData () {
+      this.getItems()
     }
   }
 }
