@@ -7,7 +7,7 @@
         type="submit"
         id="default"
         value="Default"
-        @click="setFilter('default')"
+        @click="setSortType('default')"
       >
     </label>
 

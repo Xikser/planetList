@@ -18,7 +18,7 @@ export default new Vuex.Store({
     loading: false,
     planets: [],
 
-    filter: 'default'
+    sortType: 'default'
   },
   getters: {
     planets: state => state.planets
