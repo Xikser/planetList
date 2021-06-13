@@ -16,9 +16,29 @@ export default new Vuex.Store({
       nextButtonStatus: false
     },
     loading: false,
-    planets: []
+    planets: [],
+
+    filter: 'default'
+  },
+  getters: {
+    planets: state => state.planets
   },
   mutations: {
+    FILTER_ITEMS_BY_LETTERS () {
+      this.state.planets.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1
+        } else if (b.name > a.name) {
+          return -1
+        }
+        return 0
+      })
+    },
+    FILTER_ITEMS_BY_ROTATION () {
+      this.state.planets.sort((a, b) => {
+        return a.rotation_period - b.rotation_period
+      })
+    },
     DISABLE_PREV_BUTTON (state, payload) {
       state.pagination.prevButtonStatus = payload
     },
@@ -36,7 +56,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    updatePage ({ commit, dispatch }, payload) {
+    updatePage ({
+      commit,
+      dispatch
+    }, payload) {
       if (payload.value.$event === 1) {
         commit('DISABLE_PREV_BUTTON', true)
       } else if (payload.value.$event === 6) {
@@ -49,7 +72,10 @@ export default new Vuex.Store({
       dispatch('getItems')
     },
 
-    getItems ({ commit, state }) {
+    getItems ({
+      commit,
+      state
+    }) {
       const URL = 'https://swapi.dev/api/planets/?page='
       commit('IS_LOADING', true)
       axios.get(`${URL}${state.pagination.current}`)
@@ -65,6 +91,31 @@ export default new Vuex.Store({
         .catch((error) => {
           console.log(error)
         })
+    },
+
+    filterItems ({
+      state,
+      commit,
+      dispatch
+    }, payload) {
+      if (payload === 'alph') {
+        commit('IS_LOADING', true)
+        commit('FILTER_ITEMS_BY_LETTERS')
+        state.pagination.current = 1
+        setTimeout(() => {
+          commit('IS_LOADING', false)
+        }, 500)
+      } else if (payload === 'rotation') {
+        commit('IS_LOADING', true)
+        commit('FILTER_ITEMS_BY_ROTATION')
+        state.pagination.current = 1
+
+        setTimeout(() => {
+          commit('IS_LOADING', false)
+        }, 500)
+      } else {
+        dispatch('getItems')
+      }
     }
   },
   modules: {}
