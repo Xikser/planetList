@@ -24,7 +24,7 @@ export default new Vuex.Store({
     planets: state => state.planets
   },
   mutations: {
-    FILTER_ITEMS_BY_LETTERS () {
+    SORT_ITEMS_BY_LETTERS () {
       this.state.planets.sort((a, b) => {
         if (a.name > b.name) {
           return 1
@@ -34,7 +34,7 @@ export default new Vuex.Store({
         return 0
       })
     },
-    FILTER_ITEMS_BY_ROTATION () {
+    SORT_ITEMS_BY_ROTATION () {
       this.state.planets.sort((a, b) => {
         return a.rotation_period - b.rotation_period
       })
@@ -58,7 +58,8 @@ export default new Vuex.Store({
   actions: {
     updatePage ({
       commit,
-      dispatch
+      dispatch,
+      state
     }, payload) {
       if (payload.value.$event === 1) {
         commit('DISABLE_PREV_BUTTON', true)
@@ -93,21 +94,22 @@ export default new Vuex.Store({
         })
     },
 
-    filterItems ({
+    sortBy ({
       state,
       commit,
       dispatch
     }, payload) {
-      if (payload === 'alph') {
+      if (payload === 'letter') {
         commit('IS_LOADING', true)
-        commit('FILTER_ITEMS_BY_LETTERS')
+        commit('SORT_ITEMS_BY_LETTERS')
         state.pagination.current = 1
+
         setTimeout(() => {
           commit('IS_LOADING', false)
         }, 500)
       } else if (payload === 'rotation') {
         commit('IS_LOADING', true)
-        commit('FILTER_ITEMS_BY_ROTATION')
+        commit('SORT_ITEMS_BY_ROTATION')
         state.pagination.current = 1
 
         setTimeout(() => {

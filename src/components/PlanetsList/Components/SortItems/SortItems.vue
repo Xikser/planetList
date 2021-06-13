@@ -1,6 +1,6 @@
 <template>
-  <section class="filters">
-    <h2>Filtrowanie:</h2>
+  <section class="sort">
+    <h2>Sortowanie:</h2>
 
     <label for="default">
       <input
@@ -16,7 +16,7 @@
         type="submit"
         id="name"
         value="Alfabetycznie (A-Z)"
-        @click="setFilter('alph')"
+        @click="setSortType('letter')"
       >
     </label>
 
@@ -25,7 +25,7 @@
         type="submit"
         id="rotation"
         value="Okres rotacji (rosnąco)"
-        @click="setFilter('rotation')"
+        @click="setSortType('rotation')"
       >
     </label>
   </section>
