@@ -8,12 +8,12 @@
       >
         <PlanetItem
           :class="{'isLoading' : $store.state.loading}"
-          :planetName="item.name"
-          :planetRotation="item.rotation_period"
-          :planetClimate="item.climate"
-          :planetGravity="item.gravity"
-          :planetCreated="item.created"
-          :planetUrl="item.url"
+          :name="item.name"
+          :rotation="item.rotation_period"
+          :climate="item.climate"
+          :gravity="item.gravity"
+          :created="item.created"
+          :url="item.url"
         >
         </PlanetItem>
       </li>

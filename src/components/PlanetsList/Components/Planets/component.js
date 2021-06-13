@@ -1,26 +1,26 @@
 export default {
   props: {
-    planetName: {
+    name: {
       type: String,
       required: true
     },
-    planetRotation: {
+    rotation: {
       type: String,
       required: true
     },
-    planetClimate: {
+    climate: {
       type: String,
       required: true
     },
-    planetGravity: {
+    gravity: {
       type: String,
       required: true
     },
-    planetCreated: {
+    created: {
       type: String,
       required: true
     },
-    planetUrl: {
+    url: {
       type: String,
       required: true
     }

@@ -2,31 +2,31 @@
   <div class="planet">
     <h2 class="planet__header"> Nazwa planety:
       <span>
-        {{ planetName }}
+        {{ name }}
       </span>
     </h2>
     <p class="planet__p"> Okres rotacji:
       <span>
-        {{ planetRotation }}
+        {{ rotation }}
       </span>
     </p>
     <p class="planet__p"> Panujący klimat:
       <span>
-        {{ planetClimate }}
+        {{ climate }}
       </span>
     </p>
     <p class="planet__p"> Grawitacja:
       <span>
-       {{ planetGravity }}
+       {{ gravity }}
       </span>
     </p>
     <p class="planet__p"> Utworzenie planety:
       <span>
-       {{ planetCreated }}
+       {{ created }}
       </span>
     </p>
     <p class="planet__p"> Link:
-      <a class='planet__link' :href=" planetUrl " target="_blank">Sprawdź</a>
+      <a class='planet__link' :href=" url " target="_blank">Sprawdź</a>
     </p>
   </div>
 </template>
