@@ -49,10 +49,6 @@ export default {
 
     updateCurrentPage (value) {
       this.updatePage({ value })
-    },
-
-    fetchData () {
-      this.getItems()
     }
   }
 }
