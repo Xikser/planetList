@@ -52,8 +52,13 @@ const sortBy = ({ state, commit, dispatch }, payload) => {
   }
 }
 
+const filterPlanetsByClimateType = ({ state, commit }, payload) => {
+  commit('FILTER_ITEMS_BY_CLIMATE_TYPE', payload)
+}
+
 export default {
   sortBy,
   getItems,
-  updatePage
+  updatePage,
+  filterPlanetsByClimateType
 }

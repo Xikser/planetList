@@ -12,7 +12,7 @@
     </p>
     <p class="planet__p"> Panujący klimat:
       <span>
-        {{ climate }}
+        {{ climates.reduce((s1, s2) => s1 + ', ' + s2) }}
       </span>
     </p>
     <p class="planet__p"> Grawitacja:

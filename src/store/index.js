@@ -20,8 +20,9 @@ export default new Vuex.Store({
       nextButtonStatus: false
     },
     loading: false,
+    climates: new Set(),
     planets: [],
-
+    filteredPlanets: [],
     sortType: 'default'
   },
   getters,

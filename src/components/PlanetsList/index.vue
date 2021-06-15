@@ -3,14 +3,14 @@
     <ul class="planetlist__list">
       <li
         class="planetlist__list-item"
-        v-for="item in planets"
+        v-for="item in $store.state.filteredPlanets"
         :key="item.name"
       >
         <PlanetItem
           :class="{'isLoading' : $store.state.loading}"
           :name="item.name"
-          :rotation="item.rotation_period"
-          :climate="item.climate"
+          :rotation="item.rotation"
+          :climates="item.climates"
           :gravity="item.gravity"
           :created="item.created"
           :url="item.url"

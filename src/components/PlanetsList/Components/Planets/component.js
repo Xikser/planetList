@@ -8,8 +8,8 @@ export default {
       type: String,
       required: true
     },
-    climate: {
-      type: String,
+    climates: {
+      type: Array,
       required: true
     },
     gravity: {
