@@ -1,4 +1,3 @@
-// @vue/component
 import PlanetItem from './Components/Planets/PlanetItem'
 
 export default {

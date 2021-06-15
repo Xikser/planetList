@@ -4,6 +4,7 @@
     <h1>Lista planet:</h1>
 
     <SortItems :items="planets"></SortItems>
+    <Filters :items="planets"/>
 
     <Pagination
       :current="page.current"
@@ -13,7 +14,7 @@
       :nextButtonStatus="page.nextButtonStatus"
     />
 
-    <PlanetsList :planets="planets" :loading="loading"/>
+    <PlanetsList :loading="loading"/>
 
   </section>
 </template>
@@ -21,6 +22,7 @@
 <script>
 import PlanetsList from '@/components/PlanetsList'
 import SortItems from '../components/PlanetsList/Components/SortItems/SortItems'
+import Filters from '../components/PlanetsList/Components/Filters/Filters'
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
@@ -28,6 +30,7 @@ export default {
   components: {
     PlanetsList,
     SortItems,
+    Filters,
     Pagination: () => import('../components/PlanetsList/Components/Pagination/Pagination')
   },
   computed: {
