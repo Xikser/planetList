@@ -1,33 +1,50 @@
 <template>
   <div class="planet">
-    <h2 class="planet__header"> Nazwa planety:
-      <span>
-        {{ name }}
-      </span>
-    </h2>
-    <p class="planet__p"> Okres rotacji:
-      <span>
-        {{ rotation }}
-      </span>
-    </p>
-    <p class="planet__p"> Panujący klimat:
-      <span>
-        {{ climates.reduce((s1, s2) => s1 + ', ' + s2) }}
-      </span>
-    </p>
-    <p class="planet__p"> Grawitacja:
-      <span>
-       {{ gravity }}
-      </span>
-    </p>
-    <p class="planet__p"> Utworzenie planety:
-      <span>
-       {{ created }}
-      </span>
-    </p>
-    <p class="planet__p"> Link:
-      <a class='planet__link' :href=" url " target="_blank">Sprawdź</a>
-    </p>
+    <div class="planet__header">
+      <h2>Name:
+        <span>
+          {{ name }}
+        </span>
+      </h2>
+
+      <p class="planet__p"> Created:
+        <span>
+         {{ created }}
+        </span>
+      </p>
+    </div>
+
+    <div class="planet__content">
+      <div class="planet__info">
+        <p class="planet__p"> Rotation period:
+          <span>
+          {{ rotation }}
+        </span>
+        </p>
+      </div>
+
+      <div class="planet__info">
+        <p class="planet__p"> Climate:
+          <span>
+            {{ climates.reduce((s1, s2) => s1 + ', ' + s2) }}
+          </span>
+        </p>
+      </div>
+
+      <div class="planet__info">
+        <p class="planet__p"> Gravity:
+          <span>
+           {{ gravity }}
+          </span>
+        </p>
+      </div>
+
+      <div class="planet__info">
+        <p class="planet__p"> Link:
+          <a class='planet__link' :href=" url " target="_blank">View</a>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
