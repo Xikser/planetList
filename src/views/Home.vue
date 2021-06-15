@@ -1,55 +1,39 @@
 <template>
-  <section class="container">
+  <section class="container" v-if="$store.state.loading === false">
+    <div class="container__content">
+      <h1>Planet list:</h1>
 
-    <h1>Lista planet:</h1>
+      <SortItems :items="planets"></SortItems>
+      <Filters :items="planets"/>
 
-    <SortItems :items="planets"></SortItems>
-    <Filters :items="planets"/>
-
-    <Pagination
-      :current="page.current"
-      :pages="page.pages"
-      @paginationClick="updateCurrentPage( {$event} )"
-      :prevButtonStatus="page.prevButtonStatus"
-      :nextButtonStatus="page.nextButtonStatus"
-    />
-
-    <PlanetsList :loading="loading"/>
-
+      <PlanetsList/>
+    </div>
   </section>
+  <section class="isLoading" v-else></section>
 </template>
 
 <script>
 import PlanetsList from '@/components/PlanetsList'
 import SortItems from '../components/PlanetsList/Components/SortItems/SortItems'
 import Filters from '../components/PlanetsList/Components/Filters/Filters'
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
     PlanetsList,
     SortItems,
-    Filters,
-    Pagination: () => import('../components/PlanetsList/Components/Pagination/Pagination')
+    Filters
   },
   computed: {
-    page () {
-      return this.pagination
-    },
 
-    ...mapState(['pagination', 'planets', 'loading'])
+    ...mapState(['planets'])
   },
   mounted () {
     this.getItems()
   },
   methods: {
-    ...mapActions(['getItems', 'updatePage']),
-    ...mapMutations(['UPDATE_PAGE']),
-
-    updateCurrentPage (value) {
-      this.updatePage({ value })
-    }
+    ...mapActions(['getItems'])
   }
 }
 </script>

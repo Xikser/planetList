@@ -1,12 +1,21 @@
 .container
+	width: 144em
+	margin: 0 auto
 	display: flex
 	flex-direction: column
 	justify-content: center
 	align-items: center
 
+	&__content
+		width: 100%
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+
 	h1
 		font-size: 3.5rem
-		font-family: 'Helvetica', sans-serif
+		font-family: $font--primary
 		font-weight: 600
 		text-transform: uppercase
 		letter-spacing: 2.25px
