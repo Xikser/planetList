@@ -3,6 +3,10 @@ import axios from 'axios'
 const updatePage = ({ commit, dispatch, state }, payload) => {
   commit('UPDATE_PAGE', payload)
   dispatch('getItems')
+
+  setTimeout(() => {
+    window.scrollTo(0, 0)
+  }, 0)
 }
 
 const getItems = ({ commit, state, dispatch }) => {
