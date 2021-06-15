@@ -7,7 +7,7 @@
         @click="prevPage()"
         :disabled="prevButtonStatus"
       >
-        Poprzednia strona
+        Previous page
       </button>
 
       <li class="pagination__page"
@@ -24,7 +24,7 @@
         @click="nextPage()"
         :disabled="nextButtonStatus"
       >
-        Następna strona
+        Next page
       </button>
     </ul>
   </section>
