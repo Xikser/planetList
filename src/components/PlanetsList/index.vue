@@ -6,14 +6,19 @@
         v-for="item in $store.state.filteredPlanets"
         :key="item.name"
       >
+        <div class="planetlist__planet-name">
+          <i class="fas fa-globe-europe"></i>
+          <p>{{ item.name }}</p>
+        </div>
+
         <PlanetItem
-          :class="{'isLoading' : $store.state.loading}"
           :name="item.name"
           :rotation="item.rotation"
           :climates="item.climates"
           :gravity="item.gravity"
           :created="item.created"
           :url="item.url"
+          data-aos="fade-right"
         >
         </PlanetItem>
       </li>
