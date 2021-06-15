@@ -26,7 +26,7 @@ const DISABLE_NEXT_BUTTON = (state, payload) => {
 const SET_RESOURCES = (state, payload) => {
   const uniqueClimates = new Set()
 
-  state.planets = payload.map((planet) => {
+  state.planets = payload.results.map((planet) => {
     const climates = planet.climate.split(', ')
 
     climates.forEach(climate => uniqueClimates.add(climate))
@@ -40,6 +40,9 @@ const SET_RESOURCES = (state, payload) => {
       url: planet.url
     }
   })
+
+  state.pagination.prev = payload.previous
+  state.pagination.next = payload.next
 
   state.filteredPlanets = state.planets
   state.climates = uniqueClimates

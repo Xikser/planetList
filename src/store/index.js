@@ -11,8 +11,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     pagination: {
-      prev: Number,
-      next: Number,
+      prev: '',
+      next: '',
       current: 1,
       pages: 6,
 

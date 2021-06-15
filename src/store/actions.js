@@ -1,25 +1,20 @@
 import axios from 'axios'
 
 const updatePage = ({ commit, dispatch, state }, payload) => {
-  if (payload.value.$event === 1) {
-    commit('DISABLE_PREV_BUTTON', true)
-  } else if (payload.value.$event === 6) {
-    commit('DISABLE_NEXT_BUTTON', true)
-  } else {
-    commit('DISABLE_PREV_BUTTON', false)
-    commit('DISABLE_NEXT_BUTTON', false)
-  }
   commit('UPDATE_PAGE', payload)
   dispatch('getItems')
 }
 
-const getItems = ({ commit, state }) => {
+const getItems = ({ commit, state, dispatch }) => {
   const URL = 'https://swapi.dev/api/planets/?page='
   commit('IS_LOADING', true)
+  dispatch('checkLoadingStatus')
 
   axios.get(`${URL}${state.pagination.current}`)
     .then((response) => {
-      commit('SET_RESOURCES', response.data.results)
+      commit('SET_RESOURCES', response.data)
+
+      dispatch('checkPrevNextValue')
 
       setTimeout(() => {
         commit('IS_LOADING', false)
@@ -28,6 +23,30 @@ const getItems = ({ commit, state }) => {
     .catch((error) => {
       console.log(error)
     })
+}
+
+const checkLoadingStatus = ({ state, commit }) => {
+  if (state.loading === true) {
+    commit('DISABLE_PREV_BUTTON', true)
+    commit('DISABLE_NEXT_BUTTON', true)
+  } else {
+    commit('DISABLE_PREV_BUTTON', false)
+    commit('DISABLE_NEXT_BUTTON', false)
+  }
+}
+
+const checkPrevNextValue = ({ state, commit }) => {
+  if (state.pagination.prev === null || state.pagination.prev === '') {
+    commit('DISABLE_PREV_BUTTON', true)
+  } else {
+    commit('DISABLE_PREV_BUTTON', false)
+  }
+
+  if (state.pagination.next === null || state.pagination.next === '') {
+    commit('DISABLE_NEXT_BUTTON', true)
+  } else {
+    commit('DISABLE_NEXT_BUTTON', false)
+  }
 }
 
 const sortBy = ({ state, commit, dispatch }, payload) => {
@@ -60,5 +79,7 @@ export default {
   sortBy,
   getItems,
   updatePage,
-  filterPlanetsByClimateType
+  filterPlanetsByClimateType,
+  checkPrevNextValue,
+  checkLoadingStatus
 }
