@@ -5,11 +5,17 @@ export default {
   props: {
     items: Array
   },
+  data () {
+    return {
+      sortActiveItem: ''
+    }
+  },
   methods: {
     ...mapActions(['sortBy']),
 
-    setSortType (key) {
+    setSortType (key, e) {
       this.sortBy(key)
+      this.sortActiveItem = e.target.value
     }
   }
 }

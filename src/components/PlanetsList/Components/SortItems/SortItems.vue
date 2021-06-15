@@ -1,22 +1,14 @@
 <template>
   <section class="sort">
-    <h2>Sortowanie:</h2>
-
-    <label for="default">
-      <input
-        type="submit"
-        id="default"
-        value="Default"
-        @click="setSortType('default')"
-      >
-    </label>
+    <h2>Sort by:</h2>
 
     <label for="name">
       <input
         type="submit"
         id="name"
-        value="Alfabetycznie (A-Z)"
-        @click="setSortType('letter')"
+        value="Alphabetically (A-Z)"
+        :class="{'sortActive' : sortActiveItem === 'Alphabetically (A-Z)'}"
+        @click="setSortType( 'letter', $event)"
       >
     </label>
 
@@ -24,8 +16,19 @@
       <input
         type="submit"
         id="rotation"
-        value="Okres rotacji (rosnąco)"
-        @click="setSortType('rotation')"
+        value="Rotation period (Lower to Hight)"
+        :class="{'sortActive' : sortActiveItem === 'Rotation period (Lower to Hight)'}"
+        @click="setSortType('rotation', $event)"
+      >
+    </label>
+
+    <label for="default">
+      <input
+        type="submit"
+        id="default"
+        value="Default"
+        :class="{'sortActive' : sortActiveItem === 'Default'}"
+        @click="setSortType('default', $event)"
       >
     </label>
   </section>
