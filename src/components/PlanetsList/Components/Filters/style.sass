@@ -1,10 +1,38 @@
 .filter
 	display: flex
+	border-top: 1px solid $color--text--accent
 	flex-direction: row
 	justify-content: center
 	align-items: center
 
-.terrain
+	h2
+		width: 200px
+		font-size: 1.5rem
+		text-transform: uppercase
+		font-weight: 400
+		cursor: default
+		text-align: center
+
+.climate
 
 	&__select
-		margin: 0 20px
+		margin: 0
+		width: 100%
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-content: flex-start
+		flex-wrap: wrap
+
+	&__button
+		font-size: 1.5rem
+		position: relative
+		cursor: pointer
+		margin: 15px
+		padding: 7px 0
+		text-transform: uppercase
+		transition: all .3s ease
+
+
+.filterActive
+	border-bottom: 1px solid $color--text--accent

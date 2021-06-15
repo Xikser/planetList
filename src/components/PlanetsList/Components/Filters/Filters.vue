@@ -1,20 +1,29 @@
 <template>
   <section class="filter">
-    <h2>filters:</h2>
+    <h2>
+      filters By Climate:
+    </h2>
+    <button name="climate" id="climate" class="climate__select">
+      <button
+        class="climate__button"
+        value="All"
+        @click="filter($event, -1)"
+        :class="{'filterActive' : activeIndex === -1}"
+      >
+        All
+      </button>
 
-    <h3>By Climate:</h3>
-    <select name="terrain" id="terrain" class="terrain__select">
-      <option class="filter__item" value="All" @click="filter">All</option>
-      <option
-        class="filter__item"
-        v-for="climate in $store.state.climates"
-        :key="climate"
+      <button
+        class="climate__button"
+        v-for="(climate, index) in $store.state.climates"
+        :key="index"
         :value="climate"
-        @click="filter"
+        @click="filter($event, index)"
+        :class="{'filterActive' : index === activeIndex}"
       >
         {{ climate }}
-      </option>
-    </select>
+      </button>
+    </button>
   </section>
 </template>
 
