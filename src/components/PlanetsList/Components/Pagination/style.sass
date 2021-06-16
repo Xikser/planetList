@@ -33,3 +33,19 @@
 
 		&:hover
 			background: $color--text--accent
+
+	&__prev:disabled, &__next:disabled
+		opacity: .25
+
+		&:hover
+			background: transparent
+
+@media screen and (min-width: 360px) and (max-width: 980px)
+	.pagination
+
+		&__page
+			display: none
+
+		&__list
+			padding: 0
+			margin: 0
